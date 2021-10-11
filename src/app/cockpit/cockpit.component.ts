@@ -8,7 +8,7 @@ import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@a
 export class CockpitComponent implements OnInit {
   @Output() serverCreated = new EventEmitter<{ serverName: string, serverContent: string }>();
   @Output('bpCreated') bluePrintCreated = new EventEmitter<{ serverName: string, serverContent: string }>();
-  @ViewChild('serverContent', {static: true}) serverContentInput: ElementRef;
+  @ViewChild('serverContentInput') serverContentInput: ElementRef;
 
   constructor() {
   }
@@ -17,16 +17,16 @@ export class CockpitComponent implements OnInit {
   }
 
 
-  onAddServer(serverNameInput: HTMLInputElement) {
+  onAddServer(nameInput: HTMLInputElement) {
     this.serverCreated.emit({
-      serverName: serverNameInput.value,
+      serverName: nameInput.value,
       serverContent: this.serverContentInput.nativeElement.value
     });
   }
 
-  onAddBlueprint(serverNameInput: HTMLInputElement) {
+  onAddBlueprint(nameInput: HTMLInputElement) {
     this.bluePrintCreated.emit({
-      serverName: serverNameInput.value,
+      serverName: nameInput.value,
       serverContent: this.serverContentInput.nativeElement.value
     });
   }
